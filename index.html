@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Weather App</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+  <link rel="icon" type="image/png" href="https://cdn.freebiesupply.com/logos/large/2x/weather-ios-logo-png-transparent.png"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+  <!-- Theme Toggle -->
+  <div class="mode-toggle">
+    <label class="switch">
+      <input type="checkbox" id="theme-toggle">
+      <span class="slider round"></span>
+    </label>
+    <span id="theme-label">Light Mode</span>
+  </div>
+
+  <main>
+    <form>
+      <input type="text" id="name" placeholder="Enter City" autocomplete="off"/>
+      <button type="submit">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </button>
+    </form>
+
+    <section class="result">
+      <figure class="name">
+        <figcaption>London</figcaption>
+        <img src="https://flagsapi.com/GB/shiny/32.png" alt="UK Flag"/>
+      </figure>
+
+      <figure class="temperature">
+        <img src="https://openweathermap.org/img/wn/10d@4x.png" alt="Weather Icon"/>
+        <figcaption>
+          <span>31</span><sup>°</sup>
+        </figcaption>
+      </figure>
+
+      <p class="description">Overcast clouds</p>
+
+      <ul>
+        <li>
+          <span>Clouds</span>
+          <i class="fa-solid fa-cloud"></i>
+          <span id="clouds">98</span>%
+        </li>
+        <li>
+          <span>Humidity</span>
+          <i class="fa-solid fa-droplet"></i>
+          <span id="humidity">98</span>%
+        </li>
+        <li>
+          <span>Pressure</span>
+          <i class="fa-solid fa-gauge"></i>
+          <span id="pressure">1011</span>hPa
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>Developed by Durgesh Kumar </p>
+    <a href="https://www.linkedin.com/in/rdurgesh2110/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+    <a href="https://github.com/Durgesh-2110" target="_blank"><i class="fa-brands fa-github"></i></a>
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('theme-toggle');
+    const body = document.body;
+    const label = document.getElementById('theme-label');
+
+    if (localStorage.getItem('theme') === 'dark') {
+      body.classList.add('dark-mode');
+      toggle.checked = true;
+      label.textContent = 'Dark Mode';
+    }
+
+    toggle.addEventListener('change', () => {
+      body.classList.toggle('dark-mode');
+      const isDark = body.classList.contains('dark-mode');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      label.textContent = isDark ? 'Dark Mode' : 'Light Mode';
+    });
+  </script>
+  <script src="app.js"></script>
+</body>
+</html>
